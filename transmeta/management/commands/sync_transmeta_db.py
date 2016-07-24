@@ -22,6 +22,9 @@ from django.db.models.fields import FieldDoesNotExist
 from transmeta import (mandatory_language, get_real_fieldname,
                        get_languages, get_all_translatable_fields)
 
+if sys.version_info.major == 2:
+    input = raw_input
+
 VALUE_DEFAULT = 'WITHOUT VALUE'
 
 
@@ -34,7 +37,7 @@ def ask_for_confirmation(sql_sentences, model_full_name, assume_yes):
         return True
     while True:
         prompt = '\nAre you sure that you want to execute the previous SQL: (y/n) [n]: '
-        answer = raw_input(prompt).strip()
+        answer = input(prompt).strip()
         if answer == '':
             return False
         elif answer not in ('y', 'n', 'yes', 'no'):
