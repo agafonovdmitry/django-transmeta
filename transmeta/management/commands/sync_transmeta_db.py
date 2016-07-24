@@ -8,6 +8,7 @@
 
 """
 import re
+import sys
 
 from optparse import make_option
 
